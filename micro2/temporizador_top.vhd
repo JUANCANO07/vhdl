@@ -3,7 +3,7 @@ use ieee.std_logic_1164.all;
 
 entity temporizador_top is
     generic (
-        CLK_FREQ : integer := 50000000   
+        CLK_FREQ : integer := 50_000_000    
     );
     port (
         clk         : in  std_logic;
