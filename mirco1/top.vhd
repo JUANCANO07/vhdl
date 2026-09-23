@@ -9,12 +9,12 @@ entity top is
     port (
         clk              : in  std_logic;                     
         rst              : in  std_logic;                     
-        sensor           : in  std_logic;                     
-        boton_reset      : in  std_logic;                     
+        sensor           : in  std_logic;                    
+        boton_reset_n    : in  std_logic;                     
         led_felicitacion : out std_logic;                     
         led_alarma       : out std_logic;                     
-        seg_dec          : out std_logic_vector(6 downto 0);
-        seg_uni          : out std_logic_vector(6 downto 0)    
+        seg_dec          : out std_logic_vector(6 downto 0);  
+        seg_uni          : out std_logic_vector(6 downto 0)   
     );
 end top;
 
@@ -63,6 +63,7 @@ architecture Structural of top is
     end component;
 
     signal tick_1s      : std_logic;
+    signal boton_reset  : std_logic;  
     signal cnt_caso1    : std_logic_vector(5 downto 0);
     signal paso_35      : std_logic;
     signal cnt_caso2    : std_logic_vector(7 downto 0);
@@ -73,6 +74,8 @@ architecture Structural of top is
     signal digito_unidades : std_logic_vector(3 downto 0);
 
 begin
+
+    boton_reset <= not boton_reset_n;
 
     u_divisor : divisor
         generic map ( FREQ_CLK => FREQ_CLK )
@@ -107,6 +110,7 @@ begin
         );
 
     led_alarma <= led_alarma_i;
+
 
     valor_mostrar <= unsigned(cnt_caso2) when led_alarma_i = '1'
                       else resize(unsigned(cnt_caso1), 8);
