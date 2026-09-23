@@ -9,7 +9,7 @@ entity top is
     port (
         clk              : in  std_logic;                     
         rst              : in  std_logic;                     
-        sensor           : in  std_logic;                    
+        sensor           : in  std_logic;                     
         boton_reset_n    : in  std_logic;                     
         led_felicitacion : out std_logic;                     
         led_alarma       : out std_logic;                     
@@ -112,7 +112,7 @@ begin
     led_alarma <= led_alarma_i;
 
 
-    valor_mostrar <= unsigned(cnt_caso2) when led_alarma_i = '1'
+    valor_mostrar <= to_unsigned(35, 8) + unsigned(cnt_caso2) when led_alarma_i = '1'
                       else resize(unsigned(cnt_caso1), 8);
 
     digito_decenas  <= std_logic_vector(to_unsigned(to_integer(valor_mostrar) / 10, 4));
