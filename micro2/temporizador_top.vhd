@@ -11,7 +11,8 @@ entity temporizador_top is
         stop_n      : in  std_logic;     
         reset_n     : in  std_logic;     
 
-        seg_min     : out std_logic_vector(6 downto 0);  
+        seg_min     : out std_logic_vector(6 downto 0); 
+		  seg_min_dp  : out std_logic;
         seg_sec_dec : out std_logic_vector(6 downto 0);  
         seg_sec_uni : out std_logic_vector(6 downto 0)   
     );
@@ -98,5 +99,6 @@ begin
     dec_min : bcda7seg port map (bcd => min_bcd,     seg => seg_min);
     dec_sd  : bcda7seg port map (bcd => sec_dec_bcd, seg => seg_sec_dec);
     dec_su  : bcda7seg port map (bcd => sec_uni_bcd, seg => seg_sec_uni);
+	 seg_min_dp <= '0';
 
 end architecture struct;
