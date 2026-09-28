@@ -19,7 +19,7 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity top is
     generic (
-        FREQ_CLK : integer := 100_000_000
+        FREQ_CLK : integer := 50_000_000
     );
     port (
         clk              : in  std_logic;
@@ -43,7 +43,7 @@ architecture Structural of top is
 -- Genera un pulso de un segundo a partir del reloj de la FPGA.
 
     component divisor
-        generic ( FREQ_CLK : integer := 100_000_000 );
+        generic ( FREQ_CLK : integer := 50_000_000 );
         port (
             clk     : in  std_logic;
             rst     : in  std_logic;

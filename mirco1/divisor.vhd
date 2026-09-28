@@ -16,7 +16,7 @@ use IEEE.NUMERIC_STD.ALL;
 entity divisor is
     generic (
 -- Frecuencia del reloj de entrada.
-        FREQ_CLK : integer := 100_000_000
+        FREQ_CLK : integer := 50_000_000
     );
     port (
         clk     : in  std_logic;
